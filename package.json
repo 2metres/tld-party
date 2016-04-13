@@ -1,5 +1,8 @@
 {
-  "author": "Andrew Carr <andrw.carr@gmail.com>",
+  "contributors": [
+    "Andrew Carr <andrw.carr@gmail.com>",
+    "James Martin <me@jmrtn.me>"
+  ],
   "description": "Simple Web Server that serves different content based on different Top Level Domains",
   "homepage": "https://github.com/2metres/tld-party#readme",
   "name": "tld-party",
