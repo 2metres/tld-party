@@ -29,7 +29,10 @@
   "dependencies": {
     "good": "^6.6.0",
     "good-console": "^5.3.1",
+    "handlebars": "^4.0.5",
     "hapi": "^13.3.0",
-    "inert": "^3.2.0"
+    "hoek": "^3.0.4",
+    "inert": "^3.2.0",
+    "vision": "^4.1.0"
   }
 }
