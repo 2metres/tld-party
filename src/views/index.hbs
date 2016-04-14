@@ -3,7 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="/index.css">
+  <style type="text/css">{{ stylesheet }}</style>
+  {{#if redirect }}
+     <meta http-equiv="refresh" content="{{ redirectTime }}; URL='{{ redirectUrl }}'" />
+  {{/if}}
 </head>
 
 <body>

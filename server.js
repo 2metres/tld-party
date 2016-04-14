@@ -4,8 +4,10 @@ import Vision      from 'vision'
 import Good        from 'good'
 import GoodConsole from 'good-console'
 import Handlebars  from 'handlebars'
+import Fs          from 'fs'
 
-const server = new Hapi.Server();
+const server     = new Hapi.Server();
+const stylesheet = Fs.readFileSync('./build/index.css', { encoding: 'utf8' });
 
 server.connection({ port: 3000 });
 
@@ -27,19 +29,15 @@ server.register([
 
     server.route({
       method: 'GET',
-      path: '/index.css',
-      handler: function (request, reply) {
-        reply.file('./build/index.css');
-      }
-    });
-
-    server.route({
-      method: 'GET',
       path: '/',
       handler: function (request, reply) {
         reply.view('index', {
           title: `Version: ${request.server.version}`,
-          domain: request.hostname
+          domain: request.hostname,
+          stylesheet: stylesheet,
+          redirect: false,
+          redirectUrl: 'https://google.com',
+          redirectTime: 5
         });
       }
     });
