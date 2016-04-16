@@ -31,6 +31,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "envify": "^3.4.0",
+    "es6-templates": "^0.2.2",
     "express": "^4.13.4",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
