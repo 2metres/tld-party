@@ -1,50 +1,23 @@
-import Hapi        from 'hapi'
-import Inert       from 'inert'
-import Vision      from 'vision'
-import Good        from 'good'
-import GoodConsole from 'good-console'
-import Handlebars  from 'handlebars'
-import Fs          from 'fs'
+import express from "express"
+import React from "react"
 
-const server     = new Hapi.Server();
-const stylesheet = Fs.readFileSync('./build/index.css', { encoding: 'utf8' });
+const app = express()
 
-server.connection({ port: 3000 });
+app.get("/", (req, res) => {
+  res.send(`<!DOCTYPE html>
+  <html>
+    <head>
+      <title>2.x Flux with redux</title>
+    </head>
+    <body>
+      <div id="root"></div>
+      <script type="text/javascript" src="/static/bundle.js"></script>
+    </body>
+  </html>`)
+})
 
-server.register([
-  { register: Inert },
-  { register: Vision },
-  { register: Good,
-    options: {
-      opsInterval: 5000,
-      reporters: [{ reporter: GoodConsole, events: { response: '*', log: '*' }}]
-    }
-  }], (err) => {
-    if (err) { throw err }
+app.get("/static/bundle.js", function(req, res) {
+  res.sendFile("bundle.js", {root: __dirname})
+})
 
-    server.views({
-      engines: { hbs: Handlebars },
-      path: './src/views'
-    });
-
-    server.route({
-      method: 'GET',
-      path: '/',
-      handler: function (request, reply) {
-        reply.view('index', {
-          title: `Version: ${request.server.version}`,
-          domain: request.hostname,
-          stylesheet: stylesheet,
-          redirect: false,
-          redirectUrl: 'https://google.com',
-          redirectTime: 5
-        });
-      }
-    });
-
-    server.start((err) => {
-      if (err) { throw err }
-
-      console.log(`Server running at: ${server.info.uri}`);
-    });
-});
+app.listen(3000)
