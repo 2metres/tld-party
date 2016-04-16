@@ -1,19 +1,11 @@
 import express from "express"
-import React from "react"
+import fs      from "fs"
+import React   from "react"
 
 const app = express()
 
 app.get("/", (req, res) => {
-  res.send(`<!DOCTYPE html>
-  <html>
-    <head>
-      <title>2.x Flux with redux</title>
-    </head>
-    <body>
-      <div id="root"></div>
-      <script type="text/javascript" src="/static/bundle.js"></script>
-    </body>
-  </html>`)
+  res.send(fs.readFileSync('./index.html', { encoding: 'utf8' }))
 })
 
 app.get("/static/bundle.js", function(req, res) {

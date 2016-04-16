@@ -1,6 +1,6 @@
-import expect from 'expect';
+import expect  from 'expect';
 import counter from '../../reducers/counter';
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../../actions/counter';
+import *       from '../../actions/counter';
 
 describe('reducers', () => {
   describe('counter', () => {
