@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 app.get("/static/bundle.js", (req, res) => {
   let b = browserify('index.js', {transform: ['babelify'], basedir: __dirname })
 
-  b.transform(interpolateValues, {values: domains})
+  b.transform(interpolateValues, {values: domains[0]})
   b.bundle().pipe(res)
 })
 
