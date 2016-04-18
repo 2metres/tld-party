@@ -1,16 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import Image                  from '../components/Image';
-import Counter                from '../components/Counter';
+import React   from 'react';
 
-class App extends Component {
-  render() {
-    return(
-      <div>
-        <Counter />
-        <Image imageSrc={this.props.imageSrc} />
-      </div>
-    )
-  }
-}
+import Image   from '../components/Image';
+import Counter from '../components/Counter';
+
+const App = ({ imageSrc }) => (
+  <div>
+    <Counter />
+    <Image src={ imageSrc } />
+  </div>
+)
 
 export default App

@@ -1,6 +1,7 @@
-import express            from "express"
-import fs                 from "fs"
-import interpolateValues  from "./interpolate-values-transform"
+import express           from "express"
+import fs                from "fs"
+
+import interpolateValues from "./lib/interpolate-values-transform"
 
 const app = express()
 

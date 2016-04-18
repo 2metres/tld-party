@@ -1,15 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
-class Image extends Component {
-  render() {
-    return (
-      <img src={this.props.imageSrc} />
-    )
-  }
-}
+const Image = ({ src }) => (
+  <img src={ src } />
+)
 
-Image.propType = {
-  imageSrc: PropTypes.func.isRequired
+Image.propTypes = {
+  src: React.PropTypes.string.isRequired
 }
 
 export default Image
