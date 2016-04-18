@@ -8,7 +8,13 @@ app.get("/", (req, res) => {
 })
 
 app.get("/static/bundle.js", (req, res) => {
-  res.sendFile("bundle.js", { root: __dirname })
+  var browserify = require("browserify");
+  var b = browserify('index.js', {
+    transform: ['babelify'],
+    basedir: __dirname
+  });
+
+  b.bundle().pipe(res);
 })
 
 app.listen(3000)
