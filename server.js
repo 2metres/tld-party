@@ -15,7 +15,7 @@ app.get("/static/bundle.js", (req, res) => {
     basedir: __dirname
   })
 
-  b.transform(interpolateValues, {values: {tld: "red", image: "/some/image.jpg"}})
+  b.transform(interpolateValues, {values: {tld: "red", image: "http://placekitten.com/200/300"}})
   b.bundle().pipe(res)
 })
 

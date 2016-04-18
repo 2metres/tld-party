@@ -14,7 +14,7 @@ console.log(["tld_data:", [serverData.tld, serverData.image]])
 
 render(
   <Provider store={store}>
-    <App />
+    <App imageSrc={serverData.image} />
   </Provider>,
   document.getElementById('root')
 )
