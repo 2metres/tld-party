@@ -1,5 +1,6 @@
-import express     from "express"
-import fs          from "fs"
+import express            from "express"
+import fs                 from "fs"
+import interpolateValues  from "./interpolate-values-transform"
 
 const app = express()
 
@@ -8,13 +9,14 @@ app.get("/", (req, res) => {
 })
 
 app.get("/static/bundle.js", (req, res) => {
-  var browserify = require("browserify");
+  var browserify = require("browserify")
   var b = browserify('index.js', {
     transform: ['babelify'],
     basedir: __dirname
-  });
+  })
 
-  b.bundle().pipe(res);
+  b.transform(interpolateValues, {values: {tld: "red", image: "/some/image.jpg"}})
+  b.bundle().pipe(res)
 })
 
 app.listen(3000)
