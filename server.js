@@ -1,5 +1,9 @@
-import express     from "express"
-import fs          from "fs"
+import express           from "express"
+import fs                from "fs"
+import browserify        from "browserify"
+
+import interpolateValues from "./lib/interpolate-values-transform"
+import domains           from "./config/domains"
 
 const app = express()
 
@@ -8,7 +12,10 @@ app.get("/", (req, res) => {
 })
 
 app.get("/static/bundle.js", (req, res) => {
-  res.sendFile("bundle.js", { root: __dirname })
+  let b = browserify('index.js', {transform: ['babelify'], basedir: __dirname })
+
+  b.transform(interpolateValues, {values: domains[0]})
+  b.bundle().pipe(res)
 })
 
 app.listen(3000)

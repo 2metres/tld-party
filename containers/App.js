@@ -1,16 +1,13 @@
-import { bindActionCreators } from 'redux';
-import { connect }            from 'react-redux';
-import * as CounterActions    from '../actions/counter';
-import Counter                from '../components/Counter';
+import React   from 'react';
 
-function mapStateToProps(state) {
-  return {
-    counter: state.counter
-  };
-}
+import Image   from '../components/Image';
+import Counter from '../components/Counter';
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
-}
+const App = ({ imageSrc }) => (
+  <div>
+    <Counter />
+    <Image src={ imageSrc } />
+  </div>
+)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default App
