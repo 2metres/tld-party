@@ -22,7 +22,8 @@
     "bundle:prod": "browserify index.js -t babelify -g envify -o bundle.js",
     "watch": "npm run watch:server & npm run watch:bundle & wait",
     "watch:server": "nodemon --exec babel-node --ignore bundle.js -- server.js",
-    "watch:bundle": "watchify index.js -v -t babelify -g envify -p livereactload -o bundle.js"
+    "watch:bundle": "watchify index.js -v -t babelify -g envify -p livereactload -o bundle.js",
+    "test:build": "browserify index.js -t babelify -g envify -o $CIRCLE_ARTIFACTS/bundle.js"
   },
   "dependencies": {
     "babel-cli": "^6.4.5",
