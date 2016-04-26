@@ -4,4 +4,4 @@ machine:
 
 test:
   post:
-    - npm bundle:prod
+    - npm run bundle:prod
